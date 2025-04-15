@@ -35,8 +35,8 @@ class Solution {
     vector<int> arr;
     vector<int> leftSmaller(n);
     vector<int> rightLarger(n);
-    FenwickTree tree1(n);  // Calculates `leftSmaller`.
-    FenwickTree tree2(n);  // Calculates `rightLarger`.
+    FenwickTree tree1(n); 
+    FenwickTree tree2(n);
 
     for (int i = 0; i < n; ++i)
       numToIndex[nums1[i]] = i;
