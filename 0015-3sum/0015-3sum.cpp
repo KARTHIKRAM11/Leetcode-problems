@@ -16,7 +16,7 @@ public:
                 else if(sum>0) k--;
                 else{
                     vector<int> temp={nums[i] , nums[j] , nums[k]};
-                    res.emplace_back(temp);
+                    res.push_back(temp);
                     j++;
                     k--;
                     while(j<k && nums[j]==nums[j-1]){
