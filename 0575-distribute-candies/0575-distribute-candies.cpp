@@ -1,4 +1,5 @@
-class Solution {
+
+/*class Solution {
 public:
     int distributeCandies(vector<int>& candyType) {
         set<int> st;
@@ -12,5 +13,14 @@ public:
         if(st.size()>m) return m;
 
         else return st.size();
+    }
+};
+*/
+
+class Solution {
+public:
+    int distributeCandies(vector<int>& candyType) {
+        unordered_set<int> st(candyType.begin(), candyType.end());
+        return min(st.size(), candyType.size() / 2);
     }
 };
