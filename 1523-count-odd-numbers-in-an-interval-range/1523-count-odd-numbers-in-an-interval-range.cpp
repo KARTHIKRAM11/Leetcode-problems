@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     int countOdds(int low, int high) {
@@ -8,5 +9,12 @@ public:
         }
 
         return odd;
+    }
+};
+*/
+class Solution {
+public:
+    int countOdds(int low, int high) {
+        return ((high + 1) / 2) - (low / 2);
     }
 };
