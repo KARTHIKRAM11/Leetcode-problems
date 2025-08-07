@@ -5,7 +5,7 @@ public:
         int total = 1<<(nums.size());
         for(int i = 0 ; i < total ; i++)
         {
-            vector<int> answer;
+            vector<int> answer={};
             for(int j = 0 ;  j < nums.size() ; j++)
             {
                 if(i&(1<<j)) answer.push_back(nums[j]);
