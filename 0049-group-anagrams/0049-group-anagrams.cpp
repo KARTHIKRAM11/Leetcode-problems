@@ -6,7 +6,7 @@ public:
         {
             string key = word;
             sort(key.begin() ,key.end());
-            anagram[key].push_back(word);
+            anagram[key].push_back(move(word));
         }
         vector<vector<string>> result;
         result.reserve(anagram.size());
