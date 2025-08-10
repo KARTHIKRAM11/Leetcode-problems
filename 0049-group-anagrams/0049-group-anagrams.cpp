@@ -12,7 +12,7 @@ public:
         result.reserve(anagram.size());
         for(const auto& group : anagram)
         {
-            result.push_back(group.second);
+            result.push_back(move(group.second));
         }
         return result;
     }
