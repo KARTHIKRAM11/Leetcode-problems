@@ -6,10 +6,10 @@ public:
         {
             string key = word;
             sort(key.begin() ,key.end());
-            anagram[key].push_back(move(word));
+            anagram[key].push_back(move(word)); //** move keyword saves the memory instead of copying (important) **
         }
         vector<vector<string>> result;
-        result.reserve(anagram.size());
+        result.reserve(anagram.size()); // reserve keyword reserves the space by avoiding reallocations
         for(const auto& group : anagram)
         {
             result.push_back(move(group.second));
