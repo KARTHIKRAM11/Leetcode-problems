@@ -9,4 +9,7 @@ BEGIN
     )
     where rnk = N and ROWNUM = 1;
     RETURN result;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RETURN NULL;
 END;
