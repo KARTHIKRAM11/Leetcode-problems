@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
@@ -9,6 +10,23 @@ public:
             if(st.find(nums2[i]) != st.end() && seen.find(nums2[i]) == seen.end()) {
                 res.push_back(nums2[i]);
                 seen.insert(nums2[i]);
+            }
+        }
+        return res;
+    }
+};
+*/
+
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> st(nums1.begin(), nums1.end());
+        vector<int> res;
+
+        for (int num : nums2) {
+            if (st.count(num)) {
+                res.push_back(num);
+                st.erase(num); 
             }
         }
         return res;
