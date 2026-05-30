@@ -41,15 +41,12 @@ public:
 
         set<int> obstacles;
         obstacles.insert(0);
-
-        // Build final obstacle configuration
         for (auto &q : queries) {
             if (q[0] == 1) obstacles.insert(q[1]);
         }
 
         vector<int> pos(obstacles.begin(), obstacles.end());
-        // at pos[i] we have a gap of (pos[i] - pos[i - 1]) which we are storing
-        // in the segment tree
+ 
         for (int i = 1; i < (int)pos.size(); i++) {
             update(1,0,MAXX,pos[i],pos[i] - pos[i - 1]);
         }
@@ -62,8 +59,7 @@ public:
 
                 int x = queries[i][1];
                 int sz = queries[i][2];
-                // find a prev obstacle lesser than x, then we can fit the block
-                //before prev or between prev to x
+                
                 auto it = prev(obstacles.upper_bound(x));
 
                 int prevObstacle = *it;
@@ -74,17 +70,16 @@ public:
             }
             else {
 
-                int x = queries[i][1]; // so we now remove x obstacle
+                int x = queries[i][1]; 
                 auto it = obstacles.find(x);
-                int leftPos = *prev(it); //left of x
+                int leftPos = *prev(it);
 
-                update(1,0,MAXX,x,0); // update gap at x to 0 or remove gap ending at x
+                update(1,0,MAXX,x,0);
 
                 auto rightIt = next(it);
 
                 if (rightIt != obstacles.end()) {
                     int rightPos = *rightIt;
-                    // merging the interval from leftpos to rightpos as one single gap
                     update(1,0,MAXX,rightPos,rightPos - leftPos);
                 }
 
