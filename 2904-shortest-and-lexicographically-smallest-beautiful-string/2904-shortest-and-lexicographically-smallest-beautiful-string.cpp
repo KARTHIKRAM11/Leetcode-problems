@@ -10,13 +10,10 @@ public:
         __uint128_t curr = 0, best = -1;
 
         for (int i = 0; i < n; i++) {
-            // append bit to curr
             curr = (curr << 1) | (s[i] & 1);
             k -= s[i] & 1;
-            // too many ones, pop the most significant bit
             if (k < 0)
                 k = 0, curr &= ((__uint128_t)1 << (bit_width(curr) - 1)) - 1;
-            // exactly k ones, compare masks
             if (k == 0 && curr < best)
                 start = i - bit_width(curr) + 1, best = curr;
         }
