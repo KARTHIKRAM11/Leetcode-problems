@@ -1,21 +1,23 @@
 class Solution {
 public:
-    bool isHappy(int n) {
-    set<int> s;
-    while(true)
-    {
+
+    int check(int n) {
         int sum=0;
-        while(n>0)
-        {
-            sum+=pow(n%10,2);
+        while(n) {
+            int num = n%10;
+            sum+=num*num;
             n/=10;
         }
-        if(sum==1) return true;        
-
-        n=sum;
-
-        if(s.contains(n)) return false;
-        s.insert(n);
+        return sum;
     }
+
+    bool isHappy(int n) {
+        int slow=n, fast=n;
+        do {
+            slow = check(slow);
+            fast = check(check(fast));
+        } while(slow!=fast);
+
+        return slow==1;
     }
 };
