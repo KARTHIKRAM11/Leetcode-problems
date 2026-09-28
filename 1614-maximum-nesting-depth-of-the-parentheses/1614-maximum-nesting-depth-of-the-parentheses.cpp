@@ -1,16 +1,17 @@
 class Solution {
 public:
-    int maxDepth(string s) {
+    int maxDepth(std::string s) {
         int depth = 0;
-        int maxDepth = 0;
-
-        for(char c : s) {
-            if(c == '(') {
-                depth++;
-                maxDepth = max(depth, maxDepth);
+        int r = 0;
+        for (char c : s) {
+            if (c == ')') {
+                depth--;
+                continue;
             }
-            else if(c == ')') depth--;
+            if (c != '(') continue;
+            depth++;
+            if (depth > r) r = depth;
         }
-        return maxDepth;
+        return r;
     }
 };
