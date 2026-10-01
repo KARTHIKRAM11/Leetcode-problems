@@ -13,9 +13,8 @@ public:
                 char x=st.top();
                 st.pop();
 
-                if((x=='(' && s[i]==')') || (x=='[' && s[i]==']') || (x=='{' && s[i]=='}') ) return true;
+                if((x=='(' && s[i]!=')') || (x=='[' && s[i]!=']') || (x=='{' && s[i]!='}') ) return false;
 
-                else return false;
             }
         }
         return st.empty();
