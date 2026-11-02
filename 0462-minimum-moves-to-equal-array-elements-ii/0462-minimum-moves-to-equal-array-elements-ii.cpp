@@ -1,15 +1,10 @@
 class Solution {
 public:
     int minMoves2(vector<int>& nums) {
-        sort(nums.begin() , nums.end());
-        int target = nums[nums.size()/2];
-        //int target = nums[mid];
-        long long ops=0;
-
-        for(int num : nums)
-        {
-             ops += abs(num-target);
-        }
-        return ops;
+        auto mid = nums.begin() + nums.size() / 2;
+        ranges::nth_element(nums, mid);
+        int med = *mid, moves = 0;
+        for (int x : nums) moves += abs(x - med);
+        return moves;
     }
 };
