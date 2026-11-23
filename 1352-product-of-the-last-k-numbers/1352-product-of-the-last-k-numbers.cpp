@@ -1,46 +1,30 @@
-/*class ProductOfNumbers {
-public:
-    ProductOfNumbers() {
-        
-    }
-    
-    void add(int num) {
-        
-    }
-    
-    int getProduct(int k) {
-        
-    }
-};
-*/
 class ProductOfNumbers {
 public:
-    int run_prod;
-    vector<int> prods;
+    vector<int> prefix;
+
     ProductOfNumbers() {
-        run_prod = 1;
+        prefix.push_back(1);
     }
-    
+
     void add(int num) {
-        if(num == 0)
-        {
-            run_prod = 1;
-            prods.clear();
-            return;
+        if (num == 0) {
+            prefix.clear();
+            prefix.push_back(1);
+        } 
+        else {
+            prefix.push_back(prefix.back() * num);
         }
-        run_prod = run_prod * num;
-        prods.push_back(run_prod);
     }
-    
+
     int getProduct(int k) {
-        if (k > prods.size())
-            return 0;
-        if (k == prods.size())
-            return run_prod;
-        int n = prods.size();
-        return run_prod / prods[n - k - 1];
+        int n = prefix.size();
+
+        if (k >= n) return 0;
+
+        return prefix[n - 1] / prefix[n - 1 - k];
     }
 };
+
 /**
  * Your ProductOfNumbers object will be instantiated and called as such:
  * ProductOfNumbers* obj = new ProductOfNumbers();
